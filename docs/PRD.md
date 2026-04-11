@@ -160,10 +160,10 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 - [x] CTA final → WhatsApp
 
 ### 5.2 Hub de Soluções (`/solucoes`)
-- [ ] Listagem de todos os produtos organizados por categoria com cards
-- [ ] Cada card: nome, breve descrição, ícone, badge de categoria
-- [ ] Dois botões por card: "Ver detalhes" (`/solucoes/[slug]`) e "Falar com consultor" (WhatsApp)
-- [ ] Filtro por categoria (tabs ou sidebar)
+- [x] Listagem de todos os produtos organizados por categoria com cards
+- [x] Cada card: nome, breve descrição, ícone, badge de categoria
+- [x] Dois botões por card: "Ver detalhes" (`/solucoes/[slug]`) e "Falar com consultor" (WhatsApp)
+- [x] Filtro por categoria (tabs ou sidebar)
 
 ### 5.3 Página de Produto (`/solucoes/[slug]`)
 - [ ] Headline orientada ao benefício
@@ -447,7 +447,7 @@ aria-label="Falar com consultor sobre [PRODUTO] via WhatsApp"
 |---|---|---|
 | Sprint 0 | Setup: repo, Vercel, CI/CD, tokens Tailwind, `data/produtos.ts`, `lib/whatsapp.ts` | Semana 1 |
 | ~~Sprint 1~~ ✅ | Layout global (Header, Footer, WhatsAppFloat) + Home completa | Semanas 2–3 |
-| Sprint 2 | Hub de Soluções + 11 páginas de produto com CTA WhatsApp | Semanas 4–5 |
+| Sprint 2 (parcial ✅) | Hub de Soluções + 11 páginas de produto com CTA WhatsApp | Semanas 4–5 |
 | Sprint 3 | Página `/contato` (grid WhatsApp) + páginas Consórcio sem dados de valores | Semana 6 |
 | Sprint 4 | `/sobre`, `/transparencia`, `/dabar-indica`, `/conteudo` (estrutura) | Semana 7 |
 | Sprint 5 | SEO: sitemap, metadata, JSON-LD, Open Graph, acessibilidade WCAG | Semana 8 |

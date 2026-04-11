@@ -25,9 +25,11 @@ const ICON_MAP: Record<string, LucideIcon> = {
 
 interface ProdutoCardProps {
   produto: Produto
+  /** Texto do link para a página do produto. Default: "Saiba mais →" (carrossel) */
+  detalhesLabel?: string
 }
 
-export default function ProdutoCard({ produto }: ProdutoCardProps) {
+export default function ProdutoCard({ produto, detalhesLabel = 'Saiba mais →' }: ProdutoCardProps) {
   const Icon = ICON_MAP[produto.nome] ?? Shield
 
   return (
@@ -77,7 +79,7 @@ export default function ProdutoCard({ produto }: ProdutoCardProps) {
           href={`/solucoes/${produto.slug}`}
           className="text-[11px] text-[#AAAAAA] hover:text-brand-green transition-colors duration-150 whitespace-nowrap"
         >
-          Saiba mais →
+          {detalhesLabel}
         </Link>
       </div>
     </article>
