@@ -150,14 +150,14 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 ## 5. Requisitos Funcionais
 
 ### 5.1 Home (`/`)
-- [ ] Hero com headline, subheadline e CTA WhatsApp genérico
-- [ ] Seção de soluções por categoria (carrossel — ver seção 8.4)
-- [ ] Seção "Como Trabalhamos" — fluxo em 4 etapas
-- [ ] Seção de diferenciais e proposta de valor
-- [ ] Depoimentos / cases representativos
-- [ ] Seção Dabar Indica+ com CTA WhatsApp
-- [ ] Seção segurança e transparência
-- [ ] CTA final → WhatsApp
+- [x] Hero com headline, subheadline e CTA WhatsApp genérico
+- [x] Seção de soluções por categoria (carrossel — ver seção 8.4)
+- [x] Seção "Como Trabalhamos" — fluxo em 4 etapas
+- [x] Seção de diferenciais e proposta de valor
+- [x] Depoimentos / cases representativos
+- [x] Seção Dabar Indica+ com CTA WhatsApp
+- [x] Seção segurança e transparência
+- [x] CTA final → WhatsApp
 
 ### 5.2 Hub de Soluções (`/solucoes`)
 - [ ] Listagem de todos os produtos organizados por categoria com cards
@@ -446,7 +446,7 @@ aria-label="Falar com consultor sobre [PRODUTO] via WhatsApp"
 | Sprint | Entrega | Prazo |
 |---|---|---|
 | Sprint 0 | Setup: repo, Vercel, CI/CD, tokens Tailwind, `data/produtos.ts`, `lib/whatsapp.ts` | Semana 1 |
-| Sprint 1 | Layout global (Header, Footer, WhatsAppFloat) + Home completa | Semanas 2–3 |
+| ~~Sprint 1~~ ✅ | Layout global (Header, Footer, WhatsAppFloat) + Home completa | Semanas 2–3 |
 | Sprint 2 | Hub de Soluções + 11 páginas de produto com CTA WhatsApp | Semanas 4–5 |
 | Sprint 3 | Página `/contato` (grid WhatsApp) + páginas Consórcio sem dados de valores | Semana 6 |
 | Sprint 4 | `/sobre`, `/transparencia`, `/dabar-indica`, `/conteudo` (estrutura) | Semana 7 |
