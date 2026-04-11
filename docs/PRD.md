@@ -166,24 +166,24 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 - [x] Filtro por categoria (tabs ou sidebar)
 
 ### 5.3 Página de Produto (`/solucoes/[slug]`)
-- [ ] Headline orientada ao benefício
-- [ ] Descrição completa com linguagem acessível
-- [ ] "Para quem é este produto?" com perfis ideais
-- [ ] Lista de vantagens e diferenciais
-- [ ] **Nenhum dado de valor, parcela ou condição** — especialmente para Consórcio
-- [ ] FAQ com mínimo 4 perguntas frequentes
-- [ ] CTA WhatsApp contextualizado com mensagem pré-preenchida do produto
-- [ ] CTA sticky no rodapé em mobile (56px de altura)
-- [ ] Produtos relacionados — máximo 3 cards com CTA WhatsApp próprio
-- [ ] Breadcrumb: Home > Soluções > [Produto]
-- [ ] Geração estática via `generateStaticParams`
+- [x] Headline orientada ao benefício
+- [x] Descrição completa com linguagem acessível
+- [x] "Para quem é este produto?" com perfis ideais
+- [x] Lista de vantagens e diferenciais
+- [x] **Nenhum dado de valor, parcela ou condição** — especialmente para Consórcio
+- [x] FAQ com mínimo 4 perguntas frequentes
+- [x] CTA WhatsApp contextualizado com mensagem pré-preenchida do produto
+- [x] CTA sticky no rodapé em mobile (56px de altura)
+- [x] Produtos relacionados — máximo 3 cards com CTA WhatsApp próprio
+- [x] Breadcrumb: Home > Soluções > [Produto]
+- [x] Geração estática via `generateStaticParams`
 
 ### 5.4 Contato (`/contato`)
-- [ ] Título: "Fale com um especialista Dabar"
-- [ ] Grid de botões WhatsApp — um por produto, organizados por categoria
-- [ ] Botão genérico: "Não sei por onde começar — me ajude"
-- [ ] Informações: telefone, e-mail, endereço
-- [ ] **Nenhum formulário**
+- [x] Título: "Fale com um especialista Dabar"
+- [x] Grid de botões WhatsApp — um por produto, organizados por categoria
+- [x] Botão genérico: "Não sei por onde começar — me ajude"
+- [x] Informações: telefone, e-mail, endereço
+- [x] **Nenhum formulário**
 
 ---
 
