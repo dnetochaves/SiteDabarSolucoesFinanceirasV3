@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Contato',
   description:
     'Fale diretamente com um especialista Dabar via WhatsApp. Atendimento personalizado por produto — sem formulários, sem espera.',
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br'}/contato`,
+  },
 }
 
 function WhatsAppIcon({ size = 14 }: { size?: number }) {

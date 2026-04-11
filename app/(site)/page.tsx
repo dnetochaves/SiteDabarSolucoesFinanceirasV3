@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: 'Dabar Soluções Financeiras',
   description:
     'Seguros, crédito consignado, consórcio, financiamento imobiliário, câmbio e factoring. Fale agora com um especialista Dabar via WhatsApp.',
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br',
+  },
 }
 
 export default function HomePage() {

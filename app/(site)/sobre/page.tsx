@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Sobre Nós',
   description:
     'Conheça a Dabar Soluções Financeiras — especialistas em seguros, crédito, consórcio, câmbio e mais. Atendimento personalizado via WhatsApp, direto com o consultor certo.',
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br'}/sobre`,
+  },
 }
 
 // ── DADOS ────────────────────────────────────────────────────────────────────

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Soluções',
   description:
     'Conheça o portfólio completo de soluções financeiras da Dabar: seguros, crédito consignado, consórcio, financiamento, câmbio e factoring.',
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br'}/solucoes`,
+  },
 }
 
 export default function SolucoesPage() {

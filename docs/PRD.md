@@ -200,12 +200,12 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 | Bundle JS inicial (gzip) | < 120kb |
 
 ### 6.2 SEO
-- [ ] SSG para todas as páginas de produto
-- [ ] Metadata dinâmica: `title`, `description`, Open Graph, Twitter Card
-- [ ] JSON-LD: `Organization`, `FAQPage`, `BreadcrumbList`
-- [ ] `sitemap.xml` automático via `next-sitemap`
-- [ ] `robots.txt` configurado
-- [ ] URLs semânticas e canônicas
+- [x] SSG para todas as páginas de produto
+- [x] Metadata dinâmica: `title`, `description`, Open Graph, Twitter Card
+- [x] JSON-LD: `Organization`, `FAQPage`, `BreadcrumbList`
+- [x] `sitemap.xml` automático via `next-sitemap`
+- [x] `robots.txt` configurado
+- [x] URLs semânticas e canônicas
 - [ ] Alt text em todas as imagens
 
 ### 6.3 Segurança

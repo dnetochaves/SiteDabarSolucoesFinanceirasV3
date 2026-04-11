@@ -4,19 +4,23 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 import { CheckCircle2, ChevronRight, Users } from 'lucide-react'
 
 import { getProdutoBySlug, getAllSlugs, produtos } from '@/data/produtos'
 import { produtosDetalhes } from '@/data/produtos-detalhes'
+import { faqSchema, breadcrumbSchema } from '@/lib/jsonld'
 import WhatsAppButton from '@/components/whatsapp/WhatsAppButton'
 import ProdutoCard from '@/components/sections/ProdutoCard'
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br'
 
 // PRD §5.3 + §6.2: SSG para todas as páginas de produto
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
 }
 
-// PRD §6.2: Metadata dinâmica por produto
+// PRD §6.2: Metadata dinâmica por produto — title, description, OG, Twitter Card, canonical
 export async function generateMetadata({
   params,
 }: {
@@ -25,9 +29,28 @@ export async function generateMetadata({
   const produto = getProdutoBySlug(params.slug)
   if (!produto) return {}
   const detalhe = produtosDetalhes[params.slug]
+  const description = detalhe?.headline ?? produto.descricao
+  const url = `${SITE_URL}/solucoes/${params.slug}`
+
   return {
     title: produto.nome,
-    description: detalhe?.headline ?? produto.descricao,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: `${produto.nome} | Dabar Soluções Financeiras`,
+      description,
+      url,
+      type: 'website',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: produto.nome }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${produto.nome} | Dabar Soluções Financeiras`,
+      description,
+      images: ['/og-image.png'],
+    },
   }
 }
 
@@ -62,8 +85,27 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
     .filter(Boolean)
     .slice(0, 3) as typeof produtos
 
+  // PRD §6.2 — JSON-LD: FAQPage + BreadcrumbList
+  const jsonLdFaq = faqSchema(detalhe.faq)
+  const jsonLdBreadcrumb = breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Soluções', url: `${SITE_URL}/solucoes` },
+    { name: produto.nome, url: `${SITE_URL}/solucoes/${produto.slug}` },
+  ])
+
   return (
     <>
+      <Script
+        id={`jsonld-faq-${produto.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
+      <Script
+        id={`jsonld-breadcrumb-${produto.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
+      />
+
       {/* ── HERO DA PÁGINA ─────────────────────────────── */}
       <section className="bg-brand-dark py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

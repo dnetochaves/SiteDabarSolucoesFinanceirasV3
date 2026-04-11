@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: 'Dabar Indica+',
   description:
     'Programa de parceria da Dabar Soluções Financeiras. Atue no mercado de crédito com suporte completo, treinamento especializado e remuneração por produção.',
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br'}/dabar-indica`,
+  },
 }
 
 // ── DADOS ────────────────────────────────────────────────────────────────────
