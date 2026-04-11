@@ -5,6 +5,7 @@ import Hero from '@/components/sections/Hero'
 import SolucoesCarrossel from '@/components/sections/SolucoesCarrossel'
 import ComoTrabalhamos from '@/components/sections/ComoTrabalhamos'
 import Diferenciais from '@/components/sections/Diferenciais'
+import Parceiros from '@/components/sections/Parceiros'
 import Depoimentos from '@/components/sections/Depoimentos'
 import DabarIndica from '@/components/sections/DabarIndica'
 import SegurancaTransparencia from '@/components/sections/SegurancaTransparencia'
@@ -24,6 +25,7 @@ export default function HomePage() {
       <SolucoesCarrossel />
       <ComoTrabalhamos />
       <Diferenciais />
+      <Parceiros />
       <Depoimentos />
       <DabarIndica />
       <SegurancaTransparencia />

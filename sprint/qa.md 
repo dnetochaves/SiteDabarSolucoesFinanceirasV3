@@ -1,0 +1,42 @@
+# /qa — Checklist de Qualidade Dabar
+
+Execute esta verificação antes de qualquer commit ou PR:
+
+## Performance
+- [ ] `npm run build` sem erros
+- [ ] `npm run typecheck` sem erros (strict mode)
+- [ ] `npm run lint` sem warnings
+
+## WhatsApp
+- [ ] Todos os CTAs usam `buildWhatsAppLink()` de `lib/whatsapp.ts`
+- [ ] Nenhum número hardcoded — apenas `process.env.NEXT_PUBLIC_WHATSAPP_NUMBER`
+- [ ] Todos os links com `target="_blank" rel="noopener noreferrer"`
+- [ ] aria-label correto em todos os botões WhatsApp
+
+## Design
+- [ ] Verde `#8EDB00` usado apenas em CTAs, labels e bordas de ênfase
+- [ ] Tipografia seguindo hierarquia do CLAUDE.md
+- [ ] Sem inline styles — apenas classes Tailwind
+- [ ] Animações Framer Motion sutis e intencionais
+
+## Conteúdo — Proibido
+- [ ] Nenhum formulário de lead implementado
+- [ ] Nenhum simulador de parcelas
+- [ ] Nenhum dado de valor/parcela de consórcio exposto
+
+## Acessibilidade
+- [ ] Contraste WCAG AA (mínimo 4,5:1)
+- [ ] Navegação por teclado funcional
+- [ ] aria-labels em todos os elementos interativos
+- [ ] Alt text em todas as imagens (next/image)
+
+## Responsividade
+- [ ] Testado em 375px (mobile)
+- [ ] Testado em 768px (tablet)
+- [ ] Testado em 1440px (desktop)
+- [ ] Sem overflow horizontal em nenhum breakpoint
+
+## SEO
+- [ ] Metadata (title + description) definida na página
+- [ ] Páginas de produto com `generateStaticParams`
+- [ ] next/image com `alt` descritivo em todas as imagens

@@ -1,0 +1,11 @@
+# /sprint — Iniciar Sprint de Desenvolvimento
+
+Carregue o contexto completo do projeto antes de qualquer implementação:
+
+1. Leia @CLAUDE.md — visão geral, stack, regras e design system
+2. Leia @docs/PRD.md — requisitos, rotas, critérios de aceite e roadmap
+3. Confirme qual sprint está sendo executado (ver seção 11 do PRD)
+4. Liste as tasks pendentes do sprint atual (checkboxes `- [ ]`)
+5. Implemente task por task, marcando `- [x]` ao concluir cada uma
+6. Ao final: rode `npm run typecheck && npm run lint && npm run build`
+7. Relate o que foi concluído e o que ficou pendente
