@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Criteria CF', Inter, Arial, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-lightBg text-brand-dark antialiased;
+    font-family: var(--font-sans);
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50;
+    @apply bg-brand-green text-brand-dark font-medium px-4 py-2 rounded-btn;
+  }
+}
+
+@layer utilities {
+  .text-label {
+    @apply text-[10px] font-medium uppercase tracking-[0.12em];
+  }
+  .text-badge {
+    @apply text-[10px] font-medium;
+  }
+}
