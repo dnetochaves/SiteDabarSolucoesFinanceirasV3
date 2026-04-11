@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { ChevronDown, Menu, X, MessageCircle } from 'lucide-react'
 import { getProdutosPorCategoria } from '@/data/produtos'
@@ -18,11 +19,16 @@ function DabarLogo() {
     <Link
       href="/"
       aria-label="Dabar Soluções Financeiras — página inicial"
-      className="flex items-center gap-1.5"
+      className="flex items-center"
     >
-      <span className="text-white text-xl font-semibold tracking-tight">
-        dabar<span className="text-brand-green">.</span>
-      </span>
+      <Image
+        src="/images/LOGO5_traced.svg"
+        alt="Dabar Soluções Financeiras"
+        width={120}
+        height={32}
+        priority
+        className="h-8 w-auto"
+      />
     </Link>
   )
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Phone, Mail, MapPin, Instagram, Linkedin } from 'lucide-react'
 
 const SOLUCOES_LINKS = [
@@ -28,9 +29,13 @@ export default function Footer() {
           {/* Coluna 1 — Marca */}
           <div className="lg:col-span-1">
             <Link href="/" aria-label="Dabar Soluções Financeiras" className="inline-block mb-4">
-              <span className="text-white text-xl font-semibold tracking-tight">
-                dabar<span className="text-brand-green">.</span>
-              </span>
+              <Image
+                src="/images/LOGO5_traced.svg"
+                alt="Dabar Soluções Financeiras"
+                width={110}
+                height={30}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-[13px] text-[#AAAAAA] leading-relaxed max-w-[220px]">
               Soluções financeiras completas para pessoas e empresas.
