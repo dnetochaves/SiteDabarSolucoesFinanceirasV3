@@ -2,13 +2,7 @@ import { produtos } from '@/data/produtos'
 
 /** Número WhatsApp da Dabar (NEXT_PUBLIC_WHATSAPP_NUMBER) */
 function getNumero(): string {
-  const numero = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
-  if (!numero) {
-    throw new Error(
-      'NEXT_PUBLIC_WHATSAPP_NUMBER não definido. Verifique o arquivo .env.local.'
-    )
-  }
-  return numero
+  return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5571982754075'
 }
 
 /** Monta a URL wa.me com mensagem codificada */
