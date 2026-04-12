@@ -3,7 +3,8 @@ import Script from 'next/script'
 import './globals.css'
 import { organizationSchema } from '@/lib/jsonld'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.dabar.com.br'
+// || em vez de ?? — captura string vazia quando o secret não está configurado no CI
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dabar.com.br'
 
 export const metadata: Metadata = {
   title: {

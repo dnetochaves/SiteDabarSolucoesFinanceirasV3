@@ -1,7 +1,10 @@
 // Sprint 4 — 404 customizada com CTA WhatsApp
 import Link from 'next/link'
+import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
 
 export default function NotFound() {
+  const href = buildWhatsAppLinkGenerico()
+
   return (
     <main
       id="main-content"
@@ -19,9 +22,7 @@ export default function NotFound() {
           Voltar ao início
         </Link>
         <a
-          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(
-            'Olá! Preciso de ajuda. Gostaria de falar com um consultor Dabar.'
-          )}`}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Falar com consultor Dabar via WhatsApp"
