@@ -209,10 +209,10 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 - [ ] Alt text em todas as imagens
 
 ### 6.3 Segurança
-- [ ] HTTPS (Vercel automático)
-- [ ] Headers via `next.config.js`: CSP, X-Frame-Options, HSTS, X-Content-Type-Options
-- [ ] `NEXT_PUBLIC_WHATSAPP_NUMBER` em variável de ambiente — nunca hardcoded
-- [ ] Links WhatsApp com `rel="noopener noreferrer"`
+- [x] HTTPS (Vercel automático)
+- [x] Headers via `next.config.js`: CSP, X-Frame-Options, HSTS, X-Content-Type-Options
+- [x] `NEXT_PUBLIC_WHATSAPP_NUMBER` em variável de ambiente — nunca hardcoded
+- [x] Links WhatsApp com `rel="noopener noreferrer"`
 
 ### 6.4 Acessibilidade (WCAG 2.1 AA)
 - [ ] `aria-label` descritivo em todos os botões WhatsApp
