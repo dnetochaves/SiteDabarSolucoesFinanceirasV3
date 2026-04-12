@@ -24,8 +24,8 @@ export default function Hero() {
             Dabar Soluções Financeiras
           </p>
 
-          {/* H1 — PRD §8.4: 40px · font-medium · lh 1.2 · #FFFFFF */}
-          <h1 className="text-[40px] font-medium text-white leading-[1.2] mb-6">
+          {/* H1 — PRD §8.4: 40px · font-medium · lh 1.2 · #FFFFFF — mobile-first: 28px → 40px */}
+          <h1 className="text-[28px] sm:text-[34px] md:text-[40px] font-medium text-white leading-[1.2] mb-6">
             Soluções financeiras para{' '}
             <span className="text-brand-green">cada momento</span>{' '}
             da sua vida

@@ -222,8 +222,8 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 - [x] Semântica HTML correta (`main`, `nav`, `article`, `section`)
 
 ### 6.5 Responsividade
-- [ ] Mobile-first: breakpoints 375px / 768px / 1024px / 1440px
-- [ ] CTA WhatsApp sticky no rodapé em mobile nas páginas de produto
+- [x] Mobile-first: breakpoints 375px / 768px / 1024px / 1440px
+- [x] CTA WhatsApp sticky no rodapé em mobile nas páginas de produto
 - [ ] Testado: Chrome, Firefox, Safari, Edge (últimas 2 versões)
 
 ---
