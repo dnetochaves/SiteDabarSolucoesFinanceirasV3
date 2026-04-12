@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ChevronDown, Menu, X, MessageCircle } from 'lucide-react'
 import { getProdutosPorCategoria } from '@/data/produtos'
 import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
@@ -36,17 +36,35 @@ function DabarLogo() {
 function SolucoesDropdown() {
   const [open, setOpen] = useState(false)
   const porCategoria = getProdutosPorCategoria()
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // Fecha com Escape e ao clicar fora (blur no container)
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Escape') setOpen(false)
+  }
+
+  function handleBlur(e: React.FocusEvent<HTMLDivElement>) {
+    // Fecha somente se o foco saiu completamente do container
+    if (!containerRef.current?.contains(e.relatedTarget as Node)) {
+      setOpen(false)
+    }
+  }
 
   return (
     <div
+      ref={containerRef}
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onKeyDown={handleKeyDown}
+      onBlur={handleBlur}
     >
       <button
         aria-haspopup="true"
         aria-expanded={open}
-        className="flex items-center gap-1 text-[#AAAAAA] hover:text-white text-sm transition-colors duration-150 py-1"
+        aria-controls="solucoes-dropdown"
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-1 text-[#AAAAAA] hover:text-white text-sm transition-colors duration-150 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
       >
         Soluções
         <ChevronDown
@@ -56,7 +74,12 @@ function SolucoesDropdown() {
       </button>
 
       {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
+        <div
+          id="solucoes-dropdown"
+          role="region"
+          aria-label="Menu de soluções"
+          className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50"
+        >
           <div className="bg-brand-surface border border-white/10 rounded-card shadow-xl p-6 w-[560px] grid grid-cols-2 gap-6">
             {(Object.entries(porCategoria) as [string, ReturnType<typeof getProdutosPorCategoria>[keyof ReturnType<typeof getProdutosPorCategoria>]][]).map(([categoria, prods]) => (
               <div key={categoria}>
@@ -66,7 +89,8 @@ function SolucoesDropdown() {
                     <li key={p.slug}>
                       <Link
                         href={`/solucoes/${p.slug}`}
-                        className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors duration-150"
+                        onClick={() => setOpen(false)}
+                        className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green"
                       >
                         {p.nome}
                       </Link>
@@ -78,7 +102,8 @@ function SolucoesDropdown() {
             <div className="col-span-2 pt-4 border-t border-white/10">
               <Link
                 href="/solucoes"
-                className="text-[12px] text-brand-green hover:underline"
+                onClick={() => setOpen(false)}
+                className="text-[12px] text-brand-green hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green"
               >
                 Ver todas as soluções →
               </Link>
@@ -153,12 +178,12 @@ export default function Header() {
           <DabarLogo />
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#AAAAAA] hover:text-white text-sm transition-colors duration-150"
+                className="text-[#AAAAAA] hover:text-white text-sm transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
               >
                 {link.label}
               </Link>

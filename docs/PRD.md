@@ -215,11 +215,11 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 - [x] Links WhatsApp com `rel="noopener noreferrer"`
 
 ### 6.4 Acessibilidade (WCAG 2.1 AA)
-- [ ] `aria-label` descritivo em todos os botões WhatsApp
-- [ ] Contraste mínimo 4,5:1
-- [ ] Navegação completa por teclado
-- [ ] Skip link "Pular para conteúdo principal"
-- [ ] Semântica HTML correta (`main`, `nav`, `article`, `section`)
+- [x] `aria-label` descritivo em todos os botões WhatsApp
+- [x] Contraste mínimo 4,5:1
+- [x] Navegação completa por teclado
+- [x] Skip link "Pular para conteúdo principal"
+- [x] Semântica HTML correta (`main`, `nav`, `article`, `section`)
 
 ### 6.5 Responsividade
 - [ ] Mobile-first: breakpoints 375px / 768px / 1024px / 1440px
