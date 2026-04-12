@@ -52,7 +52,8 @@ export default function Diferenciais() {
                   <Icon size={20} strokeWidth={1.5} className="text-brand-greenDark" />
                 </div>
                 <h3 className="text-[15px] font-medium text-brand-dark mb-2">{item.titulo}</h3>
-                <p className="text-[13px] text-[#888888] leading-relaxed">{item.descricao}</p>
+                {/* #666666 em bg #F8F8F6 → 5.39:1 ✓ WCAG AA */}
+                <p className="text-[13px] text-[#666666] leading-relaxed">{item.descricao}</p>
               </div>
             )
           })}

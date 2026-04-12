@@ -81,7 +81,7 @@ export default function SolucoesCarrossel() {
               onClick={prev}
               disabled={page === 0}
               aria-label="Soluções anteriores"
-              className="w-9 h-9 flex items-center justify-center rounded-full border border-brand-cardBorder text-brand-dark hover:border-brand-dark disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-150"
+              className="w-11 h-11 flex items-center justify-center rounded-full border border-brand-cardBorder text-brand-dark hover:border-brand-dark disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
             >
               <ChevronLeft size={16} />
             </button>
@@ -89,7 +89,7 @@ export default function SolucoesCarrossel() {
               onClick={next}
               disabled={page === totalPages - 1}
               aria-label="Próximas soluções"
-              className="w-9 h-9 flex items-center justify-center rounded-full border border-brand-cardBorder text-brand-dark hover:border-brand-dark disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-150"
+              className="w-11 h-11 flex items-center justify-center rounded-full border border-brand-cardBorder text-brand-dark hover:border-brand-dark disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
             >
               <ChevronRight size={16} />
             </button>

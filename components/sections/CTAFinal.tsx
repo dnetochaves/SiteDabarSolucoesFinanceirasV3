@@ -26,8 +26,8 @@ export default function CTAFinal() {
           Pronto para encontrar a solução ideal?
         </h2>
 
-        {/* PRD §8.2: sub #777777 */}
-        <p className="text-[16px] text-[#777777] leading-relaxed mb-10 max-w-lg mx-auto">
+        {/* #888888 em bg #1A1A1A → 4.83:1 ✓ WCAG AA (era #777777 = 3.95:1 ✗) */}
+        <p className="text-[16px] text-[#888888] leading-relaxed mb-10 max-w-lg mx-auto">
           Fale agora com um consultor Dabar e receba orientação especializada —
           sem formulários, sem espera, sem compromisso.
         </p>

@@ -61,8 +61,8 @@ export default function ProdutoCard({ produto, detalhesLabel = 'Saiba mais →' 
         {produto.nome}
       </h3>
 
-      {/* PRD §8.5: descrição text-[12px] text-[#888888] leading-relaxed */}
-      <p className="text-card-desc text-[#888888] leading-relaxed flex-1">
+      {/* PRD §8.5: descrição text-[12px] · #666666 em bg white → 5.74:1 ✓ WCAG AA */}
+      <p className="text-card-desc text-[#666666] leading-relaxed flex-1">
         {produto.descricao}
       </p>
 
@@ -77,7 +77,7 @@ export default function ProdutoCard({ produto, detalhesLabel = 'Saiba mais →' 
         {/* PRD §8.5: link "Saiba mais" text-[11px] text-[#AAAAAA] hover:text-brand-green */}
         <Link
           href={`/solucoes/${produto.slug}`}
-          className="text-[11px] text-[#AAAAAA] hover:text-brand-green transition-colors duration-150 whitespace-nowrap"
+          className="text-[11px] text-[#AAAAAA] hover:text-brand-green transition-colors duration-150 whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green rounded-sm"
         >
           {detalhesLabel}
         </Link>

@@ -57,7 +57,8 @@ export default function ComoTrabalhamos() {
               <h3 className="text-[15px] font-medium text-white mb-2">{etapa.titulo}</h3>
 
               {/* Descrição */}
-              <p className="text-[13px] text-[#777777] leading-relaxed">{etapa.descricao}</p>
+              {/* #888888 em bg #1A1A1A → 4.83:1 ✓ WCAG AA */}
+              <p className="text-[13px] text-[#888888] leading-relaxed">{etapa.descricao}</p>
             </li>
           ))}
         </ol>

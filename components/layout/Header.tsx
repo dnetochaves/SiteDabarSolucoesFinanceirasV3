@@ -60,7 +60,7 @@ function SolucoesDropdown() {
       onBlur={handleBlur}
     >
       <button
-        aria-haspopup="true"
+        aria-haspopup="menu"
         aria-expanded={open}
         aria-controls="solucoes-dropdown"
         onClick={() => setOpen((v) => !v)}
@@ -204,11 +204,12 @@ export default function Header() {
           </a>
 
           {/* Mobile hamburger */}
+          {/* touch target ≥ 44px + focus ring — WCAG AA */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={mobileOpen}
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-white min-w-[44px] min-h-[44px] flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green rounded"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>

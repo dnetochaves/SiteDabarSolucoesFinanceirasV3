@@ -1,8 +1,21 @@
-import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
+'use client'
 
 // PRD §5.1: Hero com headline, subheadline e CTA WhatsApp genérico
 // PRD §8.2: bg #1A1A1A · text #FFFFFF · destaque #8EDB00
 // PRD §8.4: H1 → 40px · font-medium · lh 1.2
+// CLAUDE.md: assimetria controlada — hero com stat cards à direita
+// CLAUDE.md: Entrada de seções: fadeInUp com staggerChildren
+// MOTION-SPEC: useReducedMotion para prefers-reduced-motion
+
+import { motion, useReducedMotion } from 'framer-motion'
+import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
+
+// ⚠️ Atualizar o valor de "anos" com o dado real da empresa
+const STATS = [
+  { valor: '+10 anos', label: 'de experiência no mercado' },
+  { valor: '11',       label: 'soluções financeiras disponíveis' },
+  { valor: 'Todo o Brasil', label: 'atendimento nacional' },
+]
 
 function WhatsAppIcon() {
   return (
@@ -13,41 +26,76 @@ function WhatsAppIcon() {
 }
 
 export default function Hero() {
+  const prefersReducedMotion = useReducedMotion()
   const href = buildWhatsAppLinkGenerico()
+
+  const y = prefersReducedMotion ? 0 : 20
+  const x = prefersReducedMotion ? 0 : 16
 
   return (
     <section className="bg-brand-dark py-24 md:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          {/* Label de seção — PRD §8.4: 10px · uppercase · tracking 0.12em · #8EDB00 */}
-          <p className="text-label text-brand-green mb-6">
-            Dabar Soluções Financeiras
-          </p>
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
 
-          {/* H1 — PRD §8.4: 40px · font-medium · lh 1.2 · #FFFFFF — mobile-first: 28px → 40px */}
-          <h1 className="text-[28px] sm:text-[34px] md:text-[40px] font-medium text-white leading-[1.2] mb-6">
-            Soluções financeiras para{' '}
-            <span className="text-brand-green">cada momento</span>{' '}
-            da sua vida
-          </h1>
-
-          {/* Subheadline — PRD §8.4: Body 16px · lh 1.6 · #888888 */}
-          <p className="text-[16px] text-[#888888] leading-[1.6] mb-10 max-w-xl">
-            Seguros, crédito, consórcio, financiamento e muito mais.
-            Fale diretamente com um especialista Dabar e encontre a solução
-            certa para você — sem formulários, sem espera.
-          </p>
-
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Falar com consultor Dabar via WhatsApp"
-            className="inline-flex items-center gap-2 bg-whatsapp hover:bg-whatsappHover text-white font-medium px-6 py-3.5 rounded-btn transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-whatsapp"
+          {/* ── Conteúdo principal — lado esquerdo ── */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, y }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <WhatsAppIcon />
-            Falar com um consultor
-          </a>
+            {/* Label de seção — PRD §8.4: 10px · uppercase · tracking 0.12em · #8EDB00 */}
+            <p className="text-label text-brand-green mb-6">
+              Dabar Soluções Financeiras
+            </p>
+
+            {/* H1 — PRD §8.4: 40px · font-medium · lh 1.2 */}
+            <h1 className="text-[28px] sm:text-[34px] md:text-[40px] font-medium text-white leading-[1.2] mb-6">
+              Soluções financeiras para{' '}
+              <span className="text-brand-green">cada momento</span>{' '}
+              da sua vida
+            </h1>
+
+            {/* Subheadline — #888888 passa WCAG AA (4.83:1) em bg #1A1A1A */}
+            <p className="text-[16px] text-[#888888] leading-[1.6] mb-10 max-w-lg">
+              Seguros, crédito, consórcio, financiamento e muito mais.
+              Fale diretamente com um especialista Dabar e encontre a solução
+              certa para você — sem formulários, sem espera.
+            </p>
+
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Falar com consultor Dabar via WhatsApp"
+              className="inline-flex items-center gap-2 bg-whatsapp hover:bg-whatsappHover text-white font-medium px-6 py-3.5 rounded-btn transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-whatsapp"
+            >
+              <WhatsAppIcon />
+              Falar com um consultor
+            </a>
+          </motion.div>
+
+          {/* ── Stat cards — lado direito ── */}
+          {/* Mobile: grid 3 colunas compacto · Desktop: coluna única 260px */}
+          <div className="grid grid-cols-3 lg:grid-cols-1 gap-3 lg:gap-4 shrink-0 lg:w-[260px]">
+            {STATS.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, x }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.25 + i * 0.12, duration: 0.4, ease: 'easeOut' }}
+                className="border border-white/[0.10] rounded-card p-4 lg:p-5"
+              >
+                <p className="text-[16px] sm:text-[20px] lg:text-[28px] font-medium text-white leading-tight mb-1">
+                  {stat.valor}
+                </p>
+                <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-[#888888] leading-snug">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
