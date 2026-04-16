@@ -12,7 +12,7 @@ import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
 
 // ⚠️ Atualizar o valor de "anos" com o dado real da empresa
 const STATS = [
-  { valor: '+10 anos', label: 'de experiência no mercado' },
+  { valor: '+5 anos',  label: 'de experiência no mercado' },
   { valor: '11',       label: 'soluções financeiras disponíveis' },
   { valor: 'Todo o Brasil', label: 'atendimento nacional' },
 ]
