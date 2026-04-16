@@ -169,7 +169,7 @@ O que torna este site memorável é a **precisão e o controle** — não a inte
 
 ## Variáveis de Ambiente
 ```env
-NEXT_PUBLIC_WHATSAPP_NUMBER=5571982754075
+NEXT_PUBLIC_WHATSAPP_NUMBER=5571983917864
 NEXT_PUBLIC_SITE_URL=https://www.dabar.com.br
 NEXT_PUBLIC_GA_ID=   # opcional
 ```

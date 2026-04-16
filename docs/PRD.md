@@ -250,7 +250,7 @@ Sempre usar `buildWhatsAppLink(produto)` de `lib/whatsapp.ts` — nunca montar a
 
 ### 7.3 Variáveis de Ambiente
 ```env
-NEXT_PUBLIC_WHATSAPP_NUMBER=5571982754075
+NEXT_PUBLIC_WHATSAPP_NUMBER=5571983917864
 NEXT_PUBLIC_SITE_URL=https://www.dabar.com.br
 NEXT_PUBLIC_GA_ID=          # opcional
 ```

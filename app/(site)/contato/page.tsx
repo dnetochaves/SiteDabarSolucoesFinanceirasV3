@@ -124,10 +124,10 @@ export default function ContatoPage() {
               </div>
               <p className="text-[12px] text-label text-brand-green">Telefone / WhatsApp</p>
               <a
-                href="tel:+5571982754075"
+                href="tel:+5571983917864"
                 className="text-[15px] font-medium text-brand-dark hover:text-brand-green transition-colors"
               >
-                +55 (71) 98275-4075
+                +55 (71) 98391-7864
               </a>
             </div>
 

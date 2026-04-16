@@ -44,7 +44,7 @@ fi
 # ── 2. SEGURANÇA — NÚMERO HARDCODED ──────────────────────────────────────────
 section "Segurança"
 
-HARDCODED=$(grep -r "5571982754075\|wa\.me/557" \
+HARDCODED=$(grep -r "5571983917864\|wa\.me/557" \
   --include="*.ts" --include="*.tsx" \
   --exclude-dir=node_modules --exclude-dir=.next \
   -l 2>/dev/null || true)

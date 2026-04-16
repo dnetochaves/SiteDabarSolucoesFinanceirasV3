@@ -15,7 +15,7 @@ export function organizationSchema() {
     logo: `${SITE_URL}/images/logo.png`,
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+55-71-98275-4075',
+      telephone: '+55-71-98391-7864',
       contactType: 'customer service',
       areaServed: 'BR',
       availableLanguage: 'Portuguese',
