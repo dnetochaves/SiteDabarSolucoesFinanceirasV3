@@ -76,8 +76,8 @@ export default function Hero() {
           </motion.div>
 
           {/* ── Stat cards — lado direito ── */}
-          {/* Mobile: grid 3 colunas compacto · Desktop: coluna única 260px */}
-          <div className="grid grid-cols-3 lg:grid-cols-1 gap-3 lg:gap-4 shrink-0 lg:w-[260px]">
+          {/* Mobile: stack vertical compacto · sm: 3 colunas · lg: coluna única 260px */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3 lg:gap-4 shrink-0 lg:w-[260px]">
             {STATS.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -86,10 +86,10 @@ export default function Hero() {
                 transition={{ delay: 0.25 + i * 0.12, duration: 0.4, ease: 'easeOut' }}
                 className="border border-white/[0.10] rounded-card p-4 lg:p-5"
               >
-                <p className="text-[16px] sm:text-[20px] lg:text-[28px] font-medium text-white leading-tight mb-1">
+                <p className="text-[22px] sm:text-[20px] lg:text-[28px] font-medium text-white leading-tight mb-1">
                   {stat.valor}
                 </p>
-                <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-[#888888] leading-snug">
+                <p className="text-[13px] sm:text-[11px] lg:text-[12px] text-[#888888] leading-snug">
                   {stat.label}
                 </p>
               </motion.div>

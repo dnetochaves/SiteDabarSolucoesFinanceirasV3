@@ -99,8 +99,13 @@ export default function SolucoesCarrossel() {
         {/* Track — overflow-hidden + translateX */}
         <div ref={containerRef} className="overflow-hidden">
           <div
-            role="list"
             aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+            aria-label={`Página ${page + 1} de ${totalPages}`}
+          />
+          <div
+            role="list"
             aria-label="Lista de soluções"
             className="flex"
             style={{
@@ -122,21 +127,28 @@ export default function SolucoesCarrossel() {
           </div>
         </div>
 
-        {/* Dots — PRD §8.5: dot ativo: pill verde #8EDB00 */}
-        <div className="flex justify-center gap-2 mt-8" aria-label="Navegação do carrossel">
+        {/* Dots — PRD §8.5: dot ativo: pill verde #8EDB00
+            Touch target: wrapper 44×44px para cumprir WCAG 2.5.5 */}
+        <div className="flex justify-center gap-1 mt-8" role="tablist" aria-label="Navegação do carrossel">
           {Array.from({ length: totalPages }).map((_, i) => (
             <button
               key={i}
+              role="tab"
               onClick={() => setPage(i)}
-              aria-label={`Página ${i + 1} de ${totalPages}`}
-              aria-current={i === page ? 'true' : undefined}
-              className={[
-                'h-2 rounded-full transition-all duration-300',
-                i === page
-                  ? 'w-6 bg-brand-green'
-                  : 'w-2 bg-brand-cardBorder hover:bg-[#AAAAAA]',
-              ].join(' ')}
-            />
+              aria-label={`Ir para página ${i + 1} de ${totalPages}`}
+              aria-selected={i === page}
+              className="w-11 h-11 flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green rounded"
+            >
+              <span
+                aria-hidden="true"
+                className={[
+                  'h-2 rounded-full transition-all duration-300 pointer-events-none',
+                  i === page
+                    ? 'w-6 bg-brand-green'
+                    : 'w-2 bg-brand-cardBorder group-hover:bg-[#AAAAAA]',
+                ].join(' ')}
+              />
+            </button>
           ))}
         </div>
       </div>

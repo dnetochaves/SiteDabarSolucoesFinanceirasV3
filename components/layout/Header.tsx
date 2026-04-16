@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import { ChevronDown, Menu, X, MessageCircle } from 'lucide-react'
 import { getProdutosPorCategoria } from '@/data/produtos'
 import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
@@ -76,7 +77,7 @@ function SolucoesDropdown() {
       {open && (
         <div
           id="solucoes-dropdown"
-          role="region"
+          role="menu"
           aria-label="Menu de soluções"
           className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50"
         >
@@ -86,9 +87,10 @@ function SolucoesDropdown() {
                 <p className="text-label text-brand-green mb-3">{categoria}</p>
                 <ul className="space-y-2">
                   {prods.map((p) => (
-                    <li key={p.slug}>
+                    <li key={p.slug} role="none">
                       <Link
                         href={`/solucoes/${p.slug}`}
+                        role="menuitem"
                         onClick={() => setOpen(false)}
                         className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green"
                       >
@@ -115,24 +117,31 @@ function SolucoesDropdown() {
   )
 }
 
-function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose: () => void; pathname: string }) {
   const porCategoria = getProdutosPorCategoria()
 
   if (!open) return null
 
   return (
     <div className="lg:hidden bg-brand-surface border-t border-white/10">
-      <nav className="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1">
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            onClick={onClose}
-            className="text-[#AAAAAA] hover:text-white py-2 text-sm transition-colors"
-          >
-            {link.label}
-          </Link>
-        ))}
+      <nav className="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1" aria-label="Navegação mobile">
+        {NAV_LINKS.map((link) => {
+          const isActive = pathname === link.href
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onClose}
+              aria-current={isActive ? 'page' : undefined}
+              className={[
+                'py-3 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green rounded',
+                isActive ? 'text-white' : 'text-[#AAAAAA] hover:text-white',
+              ].join(' ')}
+            >
+              {link.label}
+            </Link>
+          )
+        })}
 
         <div className="mt-4 pt-4 border-t border-white/10">
           <p className="text-label text-brand-green mb-3">Soluções</p>
@@ -144,7 +153,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                   key={p.slug}
                   href={`/solucoes/${p.slug}`}
                   onClick={onClose}
-                  className="block text-[13px] text-[#AAAAAA] hover:text-white py-1 transition-colors"
+                  className="block text-[13px] text-[#AAAAAA] hover:text-white py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green rounded"
                 >
                   {p.nome}
                 </Link>
@@ -170,6 +179,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
     <header className="bg-brand-dark sticky top-0 z-40 border-b border-white/5">
@@ -179,15 +189,22 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#AAAAAA] hover:text-white text-sm transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={[
+                    'text-sm transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green',
+                    isActive ? 'text-white' : 'text-[#AAAAAA] hover:text-white',
+                  ].join(' ')}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
             <SolucoesDropdown />
           </nav>
 
@@ -216,7 +233,7 @@ export default function Header() {
         </div>
       </div>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} pathname={pathname} />
     </header>
   )
 }

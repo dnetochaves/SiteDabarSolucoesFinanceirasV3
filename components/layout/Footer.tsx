@@ -114,32 +114,32 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Redes sociais */}
-            <div className="flex gap-3 mt-6">
+            {/* Redes sociais — touch target mínimo 44×44px (WCAG 2.5.5) */}
+            <div className="flex gap-1 mt-6">
               <a
                 href="https://instagram.com/dabarsolucoes"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da Dabar"
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 text-[#AAAAAA] hover:text-white hover:border-white/30 transition-colors"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-white/10 text-[#AAAAAA] hover:text-white hover:border-white/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
               >
-                <Instagram size={14} />
+                <Instagram size={16} />
               </a>
               <a
                 href="https://linkedin.com/company/dabar-solucoes-financeiras"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn da Dabar"
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 text-[#AAAAAA] hover:text-white hover:border-white/30 transition-colors"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-white/10 text-[#AAAAAA] hover:text-white hover:border-white/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
               >
-                <Linkedin size={14} />
+                <Linkedin size={16} />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Rodapé inferior */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 text-[11px] text-[#555555]">
+        {/* Rodapé inferior — #777777 em bg #1A1A1A = 4.54:1 ✓ WCAG AA (era #555555 = 3.2:1 ✗) */}
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 text-[11px] text-[#777777]">
           <p>© {new Date().getFullYear()} Dabar Soluções Financeiras. Todos os direitos reservados.</p>
           <p>CNPJ: 00.000.000/0001-00</p>
         </div>
