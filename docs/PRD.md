@@ -453,7 +453,232 @@ aria-label="Falar com consultor sobre [PRODUTO] via WhatsApp"
 | Sprint 5 | SEO: sitemap, metadata, JSON-LD, Open Graph, acessibilidade WCAG | Semana 8 |
 | Sprint 6 | QA: Lighthouse, cross-browser, mobile, validação de links WhatsApp | Semana 9 |
 | Sprint 7 | Homologação, ajustes finais e Go-Live | Semana 10 |
+| **Sprint 8** | **Auditoria e padronização do portfólio — Catálogo Abril 2026 (7 categorias · 38 produtos)** | **Semana 11–12** |
 
 ---
 
-*Dabar Soluções Financeiras · PRD Site Institucional v1.3 · Documento Confidencial · Abril 2026*
+## 12. Sprint 8 — Auditoria e Padronização do Portfólio (Catálogo Abril 2026)
+
+> **Origem:** Catálogo oficial `Catalogo_Produtos_Dabar.docx` revisado em abril de 2026.  
+> **Escopo:** Atualizar `data/produtos.ts`, slugs, navegação (Header dropdown), Hub de Soluções, páginas de produto e mensagens WhatsApp para refletir 7 categorias e 38 produtos.
+
+---
+
+### 12.1 Diagnóstico — Diferenças em Relação ao PRD v1.3
+
+| Situação | Item |
+|---|---|
+| **Removido do portfólio** | Factoring |
+| **Removido do portfólio** | FGTS Saque-Aniversário (substituído por Consignado INSS) |
+| **Renomeado** | Seguro de Vida → Vida Comum |
+| **Dividido em dois** | Seguro Auto e Residencial → Seguro Automóvel + Seguro Residencial |
+| **Dividido em dois** | Câmbio e Remessa Internacional → Câmbio Pessoa Física + Câmbio Pessoa Jurídica |
+| **Categoria removida** | Empresarial (Factoring migrado/removido) |
+| **Categoria removida** | Financiamento (produtos migrados para Crédito) |
+| **Categoria criada** | Investimentos (2 produtos novos) |
+| **Categoria elevada** | Precatórios — deixa de ser sub-produto de Crédito e vira categoria própria |
+| **Categoria expandida** | Consórcio: +2 novos produtos (Alavancagem Financeira, Consórcio de Serviços) |
+| **Categoria expandida** | Crédito: +10 novos produtos |
+| **Categoria expandida** | Seguros: +13 novos produtos |
+
+---
+
+### 12.2 Novo Portfólio Canônico — 7 Categorias · 38 Produtos
+
+#### Consórcio (4 produtos)
+| Produto | Slug | Texto do CTA | Status |
+|---|---|---|---|
+| Alavancagem Financeira | `/solucoes/consorcio-alavancagem` | Falar com especialista em consórcio → | 🆕 Novo |
+| Consórcio Imóvel | `/solucoes/consorcio-imobiliario` | Quero um consórcio de imóvel → | ✅ Existente |
+| Consórcio de Serviços | `/solucoes/consorcio-servicos` | Planejar com consórcio de serviços → | 🆕 Novo |
+| Consórcio de Veículo | `/solucoes/consorcio-automoveis` | Quero um consórcio de veículo → | ✅ Existente |
+
+#### Crédito (12 produtos — inclui sub-categoria Crédito Consignado)
+| Produto | Slug | Texto do CTA | Status |
+|---|---|---|---|
+| Capital de Giro | `/solucoes/capital-de-giro` | Quero crédito para meu negócio → | 🆕 Novo |
+| Car Equity | `/solucoes/car-equity` | Usar meu veículo como garantia → | 🆕 Novo |
+| Crédito via Mercado de Capitais | `/solucoes/credito-mercado-capitais` | Falar com especialista em crédito → | 🆕 Novo |
+| DabarPay | `/solucoes/dabarpay` | Usar meu cartão como crédito → | 🆕 Novo |
+| Financiamento Imobiliário | `/solucoes/financiamento-imobiliario` | Quero financiar meu imóvel → | 🔀 Migrado (era categoria própria) |
+| Financiamento de Veículos | `/solucoes/financiamento-veiculos` | Quero financiar meu veículo → | 🆕 Novo |
+| Home Equity | `/solucoes/home-equity` | Usar meu imóvel como garantia → | 🆕 Novo |
+| Consignado CLT | `/solucoes/consignado-clt` | Quero meu consignado → | ✅ Existente |
+| Consignado INSS | `/solucoes/consignado-inss` | Antecipar meu benefício INSS → | 🆕 Novo (substitui FGTS) |
+| Consignado Aeronáutica | `/solucoes/consignado-aeronautica` | Quero meu consignado FAB → | 🆕 Novo |
+| Consignado Exército | `/solucoes/consignado-exercito` | Quero meu consignado Exército → | 🆕 Novo |
+| Consignado Prefeituras | `/solucoes/consignado-prefeituras` | Quero meu consignado municipal → | 🆕 Novo |
+
+#### Câmbio (2 produtos)
+| Produto | Slug | Texto do CTA | Status |
+|---|---|---|---|
+| Câmbio Pessoa Física | `/solucoes/cambio-pessoa-fisica` | Falar com especialista em câmbio → | 🔀 Renomeado |
+| Câmbio Pessoa Jurídica | `/solucoes/cambio-pessoa-juridica` | Câmbio para minha empresa → | 🆕 Novo |
+
+#### Investimentos (2 produtos)
+| Produto | Slug | Texto do CTA | Status |
+|---|---|---|---|
+| Investimentos | `/solucoes/investimentos` | Falar com consultor de investimentos → | 🆕 Novo |
+| Investimentos Internacionais | `/solucoes/investimentos-internacionais` | Diversificar meu patrimônio → | 🆕 Novo |
+
+#### Precatórios (1 produto)
+| Produto | Slug | Texto do CTA | Status |
+|---|---|---|---|
+| Precatórios | `/solucoes/precatorio` | Antecipar meu precatório → | 🔀 Elevado (era sub-produto de Crédito) |
+
+#### Seguros (17 produtos)
+| Produto | Slug | Texto do CTA | Status |
+|---|---|---|---|
+| Responsabilidade Civil (RC) | `/solucoes/seguro-responsabilidade-civil` | Proteger contra responsabilidade civil → | 🆕 Novo |
+| Saúde Empresarial / Odontológico | `/solucoes/saude-empresarial` | Contratar plano para minha empresa → | 🆕 Novo |
+| Seguro Agronegócio | `/solucoes/seguro-agronegocio` | Proteger minha produção → | 🆕 Novo |
+| Seguro Automóvel | `/solucoes/seguro-automovel` | Cotar meu seguro auto → | 🔀 Separado (era "Auto e Residencial") |
+| Seguro Empresarial | `/solucoes/seguro-empresarial` | Proteger minha empresa → | ✅ Existente |
+| Seguro Garantia | `/solucoes/seguro-garantia` | Falar sobre seguro garantia → | 🆕 Novo |
+| Seguro Náutico | `/solucoes/seguro-nautico` | Cotar seguro para minha embarcação → | 🆕 Novo |
+| Seguro Pet | `/solucoes/seguro-pet` | Cotar seguro para meu pet → | 🆕 Novo |
+| Seguro Prestamista | `/solucoes/seguro-prestamista` | Proteger meu financiamento → | 🆕 Novo |
+| Seguro Residencial | `/solucoes/seguro-residencial` | Cotar meu seguro residencial → | 🔀 Separado (era "Auto e Residencial") |
+| Seguro Transportes | `/solucoes/seguro-transportes` | Proteger minhas cargas → | 🆕 Novo |
+| Seguro Viagem | `/solucoes/seguro-viagem` | Cotar seguro viagem → | ✅ Existente |
+| Seguro de Equipamentos | `/solucoes/seguro-equipamentos` | Proteger meus equipamentos → | 🆕 Novo |
+| Seguro de Moto | `/solucoes/seguro-moto` | Cotar seguro para minha moto → | 🆕 Novo |
+| Seguro de Vida Empresarial | `/solucoes/seguro-vida-empresarial` | Proteger minha equipe → | 🆕 Novo |
+| Seguro de Vida Resgatável | `/solucoes/seguro-vida-resgatavel` | Quero proteção com reserva → | 🆕 Novo |
+| Vida Comum | `/solucoes/seguro-vida` | Quero meu seguro de vida → | 🔀 Renomeado (era "Seguro de Vida") |
+
+---
+
+### 12.3 Mensagens WhatsApp — Novos Produtos
+
+| Produto | Mensagem pré-preenchida (decodificada) |
+|---|---|
+| Alavancagem Financeira | Olá! Tenho interesse em Alavancagem Financeira via Consórcio. Gostaria de falar com um consultor especializado. |
+| Consórcio de Serviços | Olá! Tenho interesse em Consórcio de Serviços. Gostaria de falar com um consultor especializado. |
+| Capital de Giro | Olá! Tenho interesse em Capital de Giro. Gostaria de falar com um consultor especializado. |
+| Car Equity | Olá! Tenho interesse em Car Equity. Gostaria de falar com um consultor especializado. |
+| Crédito via Mercado de Capitais | Olá! Tenho interesse em Crédito via Mercado de Capitais. Gostaria de falar com um consultor especializado. |
+| DabarPay | Olá! Tenho interesse no DabarPay. Gostaria de falar com um consultor especializado. |
+| Financiamento de Veículos | Olá! Tenho interesse em Financiamento de Veículos. Gostaria de falar com um consultor especializado. |
+| Home Equity | Olá! Tenho interesse em Home Equity. Gostaria de falar com um consultor especializado. |
+| Consignado INSS | Olá! Tenho interesse em Crédito Consignado INSS. Gostaria de falar com um consultor especializado. |
+| Consignado Aeronáutica | Olá! Tenho interesse em Crédito Consignado para militares da Aeronáutica. Gostaria de falar com um consultor especializado. |
+| Consignado Exército | Olá! Tenho interesse em Crédito Consignado para militares do Exército. Gostaria de falar com um consultor especializado. |
+| Consignado Prefeituras | Olá! Tenho interesse em Crédito Consignado Municipal. Gostaria de falar com um consultor especializado. |
+| Câmbio Pessoa Física | Olá! Tenho interesse em Câmbio para Pessoa Física. Gostaria de falar com um consultor especializado. |
+| Câmbio Pessoa Jurídica | Olá! Tenho interesse em Câmbio Empresarial. Gostaria de falar com um consultor especializado. |
+| Investimentos | Olá! Tenho interesse em Investimentos com orientação consultiva. Gostaria de falar com um consultor especializado. |
+| Investimentos Internacionais | Olá! Tenho interesse em Investimentos Internacionais. Gostaria de falar com um especialista da Dabar. |
+| Responsabilidade Civil (RC) | Olá! Tenho interesse em Seguro de Responsabilidade Civil. Gostaria de falar com um consultor especializado. |
+| Saúde Empresarial / Odontológico | Olá! Tenho interesse em Plano de Saúde Empresarial. Gostaria de falar com um consultor especializado. |
+| Seguro Agronegócio | Olá! Tenho interesse em Seguro Agronegócio. Gostaria de falar com um consultor especializado. |
+| Seguro Automóvel | Olá! Tenho interesse em Seguro Automóvel. Gostaria de falar com um consultor especializado. |
+| Seguro Garantia | Olá! Tenho interesse em Seguro Garantia. Gostaria de falar com um consultor especializado. |
+| Seguro Náutico | Olá! Tenho interesse em Seguro Náutico. Gostaria de falar com um consultor especializado. |
+| Seguro Pet | Olá! Tenho interesse em Seguro Pet. Gostaria de falar com um consultor especializado. |
+| Seguro Prestamista | Olá! Tenho interesse em Seguro Prestamista. Gostaria de falar com um consultor especializado. |
+| Seguro Residencial | Olá! Tenho interesse em Seguro Residencial. Gostaria de falar com um consultor especializado. |
+| Seguro Transportes | Olá! Tenho interesse em Seguro de Transportes. Gostaria de falar com um consultor especializado. |
+| Seguro de Equipamentos | Olá! Tenho interesse em Seguro de Equipamentos. Gostaria de falar com um consultor especializado. |
+| Seguro de Moto | Olá! Tenho interesse em Seguro de Moto. Gostaria de falar com um consultor especializado. |
+| Seguro de Vida Empresarial | Olá! Tenho interesse em Seguro de Vida Empresarial. Gostaria de falar com um consultor especializado. |
+| Seguro de Vida Resgatável | Olá! Tenho interesse em Seguro de Vida Resgatável. Gostaria de falar com um consultor especializado. |
+| Vida Comum | Olá! Tenho interesse em Seguro de Vida. Gostaria de falar com um consultor especializado. |
+
+---
+
+### 12.4 Produtos a Remover / Arquivar
+
+| Produto | Ação | Observação |
+|---|---|---|
+| Factoring | **Remover** | Não consta no catálogo oficial |
+| FGTS Saque-Aniversário | **Remover** | Substituído por Consignado INSS |
+| Seguro Auto e Residencial (`/solucoes/seguro-auto-residencial`) | **Arquivar** — redirecionar | 301 redirect: `/seguro-auto-residencial` → `/seguro-automovel` |
+| Câmbio e Remessa Internacional (`/solucoes/cambio-remessa`) | **Arquivar** — redirecionar | 301 redirect: `/cambio-remessa` → `/cambio-pessoa-fisica` |
+| Seguro de Vida (`/solucoes/seguro-de-vida`) | **Arquivar** — redirecionar | 301 redirect: `/seguro-de-vida` → `/seguro-vida` |
+
+---
+
+### 12.5 Ordem no Menu e Navegação (Header Dropdown)
+
+```
+Soluções
+├── Consórcio
+│   ├── Consórcio Imóvel
+│   ├── Consórcio de Veículo
+│   ├── Consórcio de Serviços
+│   └── Alavancagem Financeira
+├── Crédito
+│   ├── Crédito Consignado
+│   │   ├── Consignado CLT
+│   │   ├── Consignado INSS
+│   │   ├── Consignado Aeronáutica
+│   │   ├── Consignado Exército
+│   │   └── Consignado Prefeituras
+│   ├── Home Equity
+│   ├── Car Equity
+│   ├── Capital de Giro
+│   ├── Financiamento Imobiliário
+│   ├── Financiamento de Veículos
+│   ├── DabarPay
+│   └── Crédito via Mercado de Capitais
+├── Câmbio
+│   ├── Câmbio Pessoa Física
+│   └── Câmbio Pessoa Jurídica
+├── Investimentos
+│   ├── Investimentos
+│   └── Investimentos Internacionais
+├── Precatórios
+└── Seguros
+    ├── Vida Comum
+    ├── Seguro de Vida Empresarial
+    ├── Seguro de Vida Resgatável
+    ├── Seguro Automóvel
+    ├── Seguro de Moto
+    ├── Seguro Residencial
+    ├── Seguro Empresarial
+    ├── Saúde Empresarial / Odontológico
+    ├── Seguro Viagem
+    ├── Seguro Pet
+    ├── Seguro Agronegócio
+    ├── Seguro Náutico
+    ├── Seguro de Equipamentos
+    ├── Seguro Transportes
+    ├── Seguro Prestamista
+    ├── Seguro Garantia
+    └── Responsabilidade Civil (RC)
+```
+
+---
+
+### 12.6 Escopo de Trabalho — Checklist
+
+#### data/produtos.ts
+- [ ] Adicionar 27 novos produtos com todos os campos (`nome`, `slug`, `categoria`, `descricao`, `paraQuemE`, `vantagem`, `mensagemWhatsApp`, `ctaLabel`)
+- [ ] Atualizar categoria de `Financiamento Imobiliário` para `Crédito`
+- [ ] Mover `Precatórios` para categoria própria
+- [ ] Renomear `Seguro de Vida` → `Vida Comum` e atualizar slug
+- [ ] Separar `Seguro Auto e Residencial` em dois registros
+- [ ] Separar `Câmbio e Remessa Internacional` em dois registros
+- [ ] Remover `Factoring` e `FGTS Saque-Aniversário`
+- [ ] Adicionar sub-categoria `Crédito Consignado` como agrupador dentro de `Crédito`
+
+#### Páginas (`/solucoes/[slug]`)
+- [ ] Criar 27 novas páginas de produto via SSG (`generateStaticParams` atualizado)
+- [ ] Criar redirecionamentos 301 para os 3 slugs arquivados (`next.config.js`)
+- [ ] Garantir que páginas de Consórcio não exponham valores ou parcelas
+
+#### Navegação
+- [ ] Atualizar Header dropdown com nova estrutura de 7 categorias
+- [ ] Implementar sub-menu aninhado para `Crédito Consignado` dentro de `Crédito`
+- [ ] Atualizar tabs/filtros no Hub de Soluções (`/solucoes`)
+
+#### SEO e Conteúdo
+- [ ] Metadata (`title`, `description`, Open Graph) para cada novo produto
+- [ ] JSON-LD `FAQPage` com mínimo 4 perguntas por novo produto
+- [ ] Atualizar `sitemap.xml` com novos slugs e remover slugs arquivados
+- [ ] Atualizar página `/contato` com grid completo de 38 produtos por categoria
+
+---
+
+*Dabar Soluções Financeiras · PRD Site Institucional v1.3 · Sprint 8 adicionado em abril de 2026*

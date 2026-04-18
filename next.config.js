@@ -51,6 +51,37 @@ const nextConfig = {
 
   /** Redirect trailing slashes */
   trailingSlash: false,
+
+  /** Redirects 301 para slugs arquivados — Sprint 8 */
+  async redirects() {
+    return [
+      {
+        source: '/solucoes/seguro-de-vida',
+        destination: '/solucoes/seguro-vida',
+        permanent: true,
+      },
+      {
+        source: '/solucoes/seguro-auto-residencial',
+        destination: '/solucoes/seguro-automovel',
+        permanent: true,
+      },
+      {
+        source: '/solucoes/cambio-remessa',
+        destination: '/solucoes/cambio-pessoa-fisica',
+        permanent: true,
+      },
+      {
+        source: '/solucoes/fgts-saque-aniversario',
+        destination: '/solucoes/consignado-inss',
+        permanent: true,
+      },
+      {
+        source: '/solucoes/factoring',
+        destination: '/solucoes',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

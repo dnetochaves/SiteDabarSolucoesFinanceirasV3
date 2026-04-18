@@ -9,12 +9,12 @@ import ProdutoCard from './ProdutoCard'
 
 const CATEGORIAS: Array<'Todos' | Categoria> = [
   'Todos',
-  'Seguros',
-  'Crédito',
   'Consórcio',
-  'Financiamento',
-  'Câmbio e Remessas',
-  'Empresarial',
+  'Crédito',
+  'Câmbio',
+  'Investimentos',
+  'Precatórios',
+  'Seguros',
 ]
 
 export default function SolucoesHub() {

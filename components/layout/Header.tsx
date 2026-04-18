@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, Menu, X, MessageCircle } from 'lucide-react'
-import { getProdutosPorCategoria } from '@/data/produtos'
+import { getProdutosPorCategoria, CATEGORIA_ORDER, type Categoria, type Produto } from '@/data/produtos'
 import { buildWhatsAppLinkGenerico } from '@/lib/whatsapp'
 
 const NAV_LINKS = [
@@ -14,6 +14,9 @@ const NAV_LINKS = [
   { href: '/contato', label: 'Contato' },
   { href: '/dabar-indica', label: 'Dabar Indica+' },
 ]
+
+/** Categorias pequenas exibidas na coluna esquerda do mega-menu */
+const SMALL_CATS: Categoria[] = ['Consórcio', 'Câmbio', 'Investimentos', 'Precatórios']
 
 function DabarLogo() {
   return (
@@ -34,18 +37,40 @@ function DabarLogo() {
   )
 }
 
+function CategoryColumn({ categoria, produtos }: { categoria: string; produtos: Produto[] }) {
+  return (
+    <div>
+      <p className="text-label text-brand-green mb-3 uppercase tracking-widest">{categoria}</p>
+      <ul className="space-y-1.5">
+        {produtos.map((p) => (
+          <li key={p.slug}>
+            <Link
+              href={`/solucoes/${p.slug}`}
+              className="text-[12px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green leading-tight block"
+            >
+              {p.nome}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 function SolucoesDropdown() {
   const [open, setOpen] = useState(false)
-  const porCategoria = getProdutosPorCategoria()
   const containerRef = useRef<HTMLDivElement>(null)
+  const porCategoria = getProdutosPorCategoria()
 
-  // Fecha com Escape e ao clicar fora (blur no container)
+  // Separa produtos de Crédito por subCategoria
+  const creditoGeral = porCategoria['Crédito'].filter((p) => !p.subCategoria)
+  const consignados = porCategoria['Crédito'].filter((p) => p.subCategoria === 'Crédito Consignado')
+
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'Escape') setOpen(false)
   }
 
   function handleBlur(e: React.FocusEvent<HTMLDivElement>) {
-    // Fecha somente se o foco saiu completamente do container
     if (!containerRef.current?.contains(e.relatedTarget as Node)) {
       setOpen(false)
     }
@@ -81,27 +106,72 @@ function SolucoesDropdown() {
           aria-label="Menu de soluções"
           className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50"
         >
-          <div className="bg-brand-surface border border-white/10 rounded-card shadow-xl p-6 w-[560px] grid grid-cols-2 gap-6">
-            {(Object.entries(porCategoria) as [string, ReturnType<typeof getProdutosPorCategoria>[keyof ReturnType<typeof getProdutosPorCategoria>]][]).map(([categoria, prods]) => (
-              <div key={categoria}>
-                <p className="text-label text-brand-green mb-3">{categoria}</p>
-                <ul className="space-y-2">
-                  {prods.map((p) => (
-                    <li key={p.slug} role="none">
-                      <Link
-                        href={`/solucoes/${p.slug}`}
-                        role="menuitem"
-                        onClick={() => setOpen(false)}
-                        className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green"
-                      >
-                        {p.nome}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            <div className="col-span-2 pt-4 border-t border-white/10">
+          {/* Mega-menu 3 colunas: pequenas | Crédito | Seguros */}
+          <div className="bg-brand-surface border border-white/10 rounded-card shadow-xl p-6 w-[860px] grid grid-cols-[200px_1fr_1fr] gap-6">
+
+            {/* Coluna 1 — categorias pequenas */}
+            <div className="flex flex-col gap-6 border-r border-white/10 pr-6">
+              {SMALL_CATS.map((cat) => (
+                <CategoryColumn key={cat} categoria={cat} produtos={porCategoria[cat]} />
+              ))}
+            </div>
+
+            {/* Coluna 2 — Crédito */}
+            <div className="border-r border-white/10 pr-6">
+              <p className="text-label text-brand-green mb-3 uppercase tracking-widest">Crédito</p>
+              <ul className="space-y-1.5 mb-4">
+                {creditoGeral.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/solucoes/${p.slug}`}
+                      className="text-[12px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green leading-tight block"
+                    >
+                      {p.nome}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {consignados.length > 0 && (
+                <>
+                  <p className="text-[10px] text-[#555555] uppercase tracking-widest mb-2 mt-3">
+                    Crédito Consignado
+                  </p>
+                  <ul className="space-y-1.5">
+                    {consignados.map((p) => (
+                      <li key={p.slug}>
+                        <Link
+                          href={`/solucoes/${p.slug}`}
+                          className="text-[12px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green leading-tight block"
+                        >
+                          {p.nome}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+
+            {/* Coluna 3 — Seguros */}
+            <div>
+              <p className="text-label text-brand-green mb-3 uppercase tracking-widest">Seguros</p>
+              {/* Grid 2 sub-colunas para acomodar os 17 produtos */}
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                {porCategoria['Seguros'].map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/solucoes/${p.slug}`}
+                      className="text-[12px] text-[#AAAAAA] hover:text-white transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green leading-tight block"
+                    >
+                      {p.nome}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Rodapé */}
+            <div className="col-span-3 pt-4 border-t border-white/10">
               <Link
                 href="/solucoes"
                 onClick={() => setOpen(false)}
@@ -123,7 +193,7 @@ function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose: () =>
   if (!open) return null
 
   return (
-    <div className="lg:hidden bg-brand-surface border-t border-white/10">
+    <div className="lg:hidden bg-brand-surface border-t border-white/10 max-h-[80vh] overflow-y-auto">
       <nav className="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1" aria-label="Navegação mobile">
         {NAV_LINKS.map((link) => {
           const isActive = pathname === link.href
@@ -145,21 +215,45 @@ function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose: () =>
 
         <div className="mt-4 pt-4 border-t border-white/10">
           <p className="text-label text-brand-green mb-3">Soluções</p>
-          {(Object.entries(porCategoria) as [string, ReturnType<typeof getProdutosPorCategoria>[keyof ReturnType<typeof getProdutosPorCategoria>]][]).map(([categoria, prods]) => (
-            <div key={categoria} className="mb-4">
-              <p className="text-[11px] text-[#555555] uppercase tracking-widest mb-2">{categoria}</p>
-              {prods.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/solucoes/${p.slug}`}
-                  onClick={onClose}
-                  className="block text-[13px] text-[#AAAAAA] hover:text-white py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green rounded"
-                >
-                  {p.nome}
-                </Link>
-              ))}
-            </div>
-          ))}
+          {CATEGORIA_ORDER.map((cat) => {
+            const prods = porCategoria[cat]
+            // Agrupa consignados dentro de Crédito
+            const geral = prods.filter((p) => !p.subCategoria)
+            const consignados = prods.filter((p) => p.subCategoria === 'Crédito Consignado')
+
+            return (
+              <div key={cat} className="mb-5">
+                <p className="text-[11px] text-[#555555] uppercase tracking-widest mb-2">{cat}</p>
+                {geral.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/solucoes/${p.slug}`}
+                    onClick={onClose}
+                    className="block text-[13px] text-[#AAAAAA] hover:text-white py-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green rounded"
+                  >
+                    {p.nome}
+                  </Link>
+                ))}
+                {consignados.length > 0 && (
+                  <>
+                    <p className="text-[10px] text-[#444] uppercase tracking-widest mt-3 mb-1.5">
+                      Crédito Consignado
+                    </p>
+                    {consignados.map((p) => (
+                      <Link
+                        key={p.slug}
+                        href={`/solucoes/${p.slug}`}
+                        onClick={onClose}
+                        className="block text-[13px] text-[#AAAAAA] hover:text-white py-1.5 pl-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green rounded"
+                      >
+                        {p.nome}
+                      </Link>
+                    ))}
+                  </>
+                )}
+              </div>
+            )
+          })}
         </div>
 
         <a
@@ -221,7 +315,6 @@ export default function Header() {
           </a>
 
           {/* Mobile hamburger */}
-          {/* touch target ≥ 44px + focus ring — WCAG AA */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
