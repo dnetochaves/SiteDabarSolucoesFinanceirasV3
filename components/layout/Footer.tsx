@@ -117,7 +117,7 @@ export default function Footer() {
             {/* Redes sociais — touch target mínimo 44×44px (WCAG 2.5.5) */}
             <div className="flex gap-1 mt-6">
               <a
-                href="https://instagram.com/dabarsolucoes"
+                href="https://www.instagram.com/dabarsolucoesfinanceiras/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da Dabar"
