@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: '/sobre', label: 'Sobre nós' },
   { href: '/contato', label: 'Contato' },
   { href: '/dabar-indica', label: 'Dabar Indica+' },
+  { href: '/transparencia', label: 'Transparência' },
 ]
 
 /** Categorias pequenas exibidas na coluna esquerda do mega-menu */

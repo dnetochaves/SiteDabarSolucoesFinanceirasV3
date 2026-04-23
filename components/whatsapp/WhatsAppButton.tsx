@@ -54,7 +54,7 @@ export default function WhatsAppButton({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Falar com consultor sobre ${produto} via WhatsApp`}
+        aria-label={`${label} — Falar com consultor sobre ${produto} via WhatsApp`}
         className={[
           // PRD §8.6 mobile sticky: w-full h-14 fixed bottom-0
           'fixed bottom-0 left-0 z-40 w-full h-14',
@@ -77,7 +77,7 @@ export default function WhatsAppButton({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Falar com consultor sobre ${produto} via WhatsApp`}
+      aria-label={`${label} — Falar com consultor sobre ${produto} via WhatsApp`}
       className={[
         // PRD §8.6: bg #25D366 · hover #1DA851 · text #FFF · 11px · font-medium
         // padding 8px 14px · border-radius 4px · ícone 12×12px à esquerda

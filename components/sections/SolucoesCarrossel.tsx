@@ -98,12 +98,9 @@ export default function SolucoesCarrossel() {
 
         {/* Track — overflow-hidden + translateX */}
         <div ref={containerRef} className="overflow-hidden">
-          <div
-            aria-live="polite"
-            aria-atomic="true"
-            className="sr-only"
-            aria-label={`Página ${page + 1} de ${totalPages}`}
-          />
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            Página {page + 1} de {totalPages}
+          </div>
           <div
             role="list"
             aria-label="Lista de soluções"
