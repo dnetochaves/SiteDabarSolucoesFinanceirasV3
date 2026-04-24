@@ -681,4 +681,57 @@ Soluções
 
 ---
 
-*Dabar Soluções Financeiras · PRD Site Institucional v1.3 · Sprint 8 adicionado em abril de 2026*
+---
+
+## 13. Sprint 9 — Certificação Correspondente Banco do Brasil (FBB100)
+
+> **Origem:** Pasta `public/FBB100/` adicionada ao repositório com 3 selos PNG e o `Guia_FB100.pdf` da certificação Correspondente Completa do Banco do Brasil.  
+> **Objetivo:** Exibir os selos de certificação de forma proeminente no site para reforçar a credibilidade institucional da Dabar junto ao Banco do Brasil.
+
+---
+
+### 13.1 Contexto e Motivação
+
+A Dabar é **Correspondente Bancário Certificado** pelo Banco do Brasil (programa FBB100). Esta certificação é um diferencial competitivo relevante que transmite confiança e autoridade para os visitantes — especialmente na categoria de Crédito Consignado, onde o relacionamento com o BB é central.
+
+Os ativos disponíveis em `public/FBB100/`:
+| Arquivo | Tipo | Uso |
+|---|---|---|
+| `230905_AF_FBB_Selos_Certificacao_Correspondente_Completa_RGB_DM_1.png` | Selo PNG | Exibição principal |
+| `230905_AF_FBB_Selos_Certificacao_Correspondente_Completa_RGB_DM_2.png` | Selo PNG | Exibição complementar |
+| `230905_AF_FBB_Selos_Certificacao_Correspondente_Completa_RGB_DM_3.png` | Selo PNG | Exibição complementar |
+| `Guia_FB100.pdf` | Manual PDF | Link de download opcional |
+
+---
+
+### 13.2 Escopo de Implementação
+
+#### Novo componente
+- `components/sections/CertificacaoBancoBrasil.tsx` — seção dedicada com os 3 selos e texto de contexto
+
+#### Integração na Home (`/`)
+- Inserir `<CertificacaoBancoBrasil />` entre `<SegurancaTransparencia />` e `<CTAFinal />`
+
+#### Footer
+- Adicionar o selo principal (`_1.png`) na coluna de marca (abaixo da logo e descrição)
+
+#### Regras de implementação
+- `next/image` obrigatório — nunca `<img>`
+- Alt text descritivo em cada selo
+- Seção sem fundo verde amplo — usar `#F8F8F6` ou `#1A1A1A`
+- Link para `Guia_FB100.pdf` com `target="_blank" rel="noopener noreferrer"`
+- Nenhum dado sensível exposto; o PDF é público e institucional
+
+---
+
+### 13.3 Checklist
+
+- [x] Criar `CertificacaoBancoBrasil.tsx` com os 3 selos e texto institucional
+- [x] Inserir seção na Home entre `SegurancaTransparencia` e `CTAFinal`
+- [x] Adicionar selo no Footer (coluna da marca)
+- [x] Alt text acessível em todas as imagens dos selos
+- [x] Link para download do `Guia_FB100.pdf`
+
+---
+
+*Dabar Soluções Financeiras · PRD Site Institucional v1.3 · Sprint 9 adicionado em abril de 2026*

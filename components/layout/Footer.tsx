@@ -38,8 +38,17 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[13px] text-[#AAAAAA] leading-relaxed max-w-[220px]">
-              Soluções financeiras completas para pessoas e empresas.
+              Empresa regulamentada e certificada pelos órgãos competentes do sistema financeiro nacional.
             </p>
+            <div className="mt-5">
+              <Image
+                src="/FBB100/230905_AF_FBB_Selos_Certificacao_Correspondente_Completa_RGB_DM_1.png"
+                alt="Correspondente Certificado Banco do Brasil"
+                width={80}
+                height={80}
+                className="object-contain w-16 h-16 opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </div>
           </div>
 
           {/* Coluna 2 — Soluções */}

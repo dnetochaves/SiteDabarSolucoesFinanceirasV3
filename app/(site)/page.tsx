@@ -9,6 +9,7 @@ import Parceiros from '@/components/sections/Parceiros'
 import Depoimentos from '@/components/sections/Depoimentos'
 import DabarIndica from '@/components/sections/DabarIndica'
 import SegurancaTransparencia from '@/components/sections/SegurancaTransparencia'
+import CertificacaoBancoBrasil from '@/components/sections/CertificacaoBancoBrasil'
 import CTAFinal from '@/components/sections/CTAFinal'
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function HomePage() {
       <Depoimentos />
       <DabarIndica />
       <SegurancaTransparencia />
+      <CertificacaoBancoBrasil />
       <CTAFinal />
     </>
   )
